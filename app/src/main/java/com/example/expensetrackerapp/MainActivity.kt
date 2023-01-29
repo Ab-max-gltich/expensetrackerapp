@@ -54,6 +54,9 @@ class MainActivity : Activity() {
             val totalAmountTextView = findViewById<TextView>(R.id.total_amount)
             val totalAmount = expenseDbHelper.getTotalAmountSpent()
             totalAmountTextView.text = totalAmount.toString()
+
+            nameEditText.setText("")
+            amountEditText.setText("")
         }
 
     }

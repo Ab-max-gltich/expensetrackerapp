@@ -21,12 +21,6 @@ class ExpenseDbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
 
 
 
-    // database constants
-
-
-
-
-
     override fun onCreate(db: SQLiteDatabase) {
         // create the "expenses" table
         val createTableSql = "CREATE TABLE $TABLE_NAME (" +
