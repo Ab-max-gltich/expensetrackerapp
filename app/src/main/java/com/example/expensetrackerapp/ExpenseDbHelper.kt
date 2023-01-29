@@ -36,7 +36,7 @@ class ExpenseDbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // implement logic to upgrade the database if needed
+
     }
 
     // insert a new expense into the database

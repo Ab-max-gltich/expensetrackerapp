@@ -40,28 +40,37 @@ class MainActivity : Activity() {
         val nameEditText = findViewById<EditText>(R.id.expense_name)
         val name = nameEditText.text.toString()
 
-        val amountEditText = findViewById<EditText>(R.id.expense_amount)
-        val amount = amountEditText.text.toString().toDouble()
+        if (!name.isEmpty()) {
+            val amountEditText = findViewById<EditText>(R.id.expense_amount)
+            val amount = amountEditText.text.toString()
 
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-        val date = dateFormat.format(Date())
+            if (!amount.isEmpty()) {
+                val amount = amount.toDouble()
 
-        var expense = Expense(0, name, amount, date)
-        var expenseId = expenseDbHelper.insertExpense(expense)
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+                val date = dateFormat.format(Date())
 
-        if (expenseId != -1L) {
-            expense.id = expenseId
-            listAdapter?.add(expense)
-            listAdapter?.notifyDataSetChanged()
-            val totalAmountTextView = findViewById<TextView>(R.id.total_amount)
-            val totalAmount = expenseDbHelper.getTotalAmountSpent()
-            val formattedString = resources.getString(R.string.total_amount_label, totalAmount.toString())
-            totalAmountTextView.text = formattedString
+                var expense = Expense(0, name, amount, date)
+                var expenseId = expenseDbHelper.insertExpense(expense)
 
-            nameEditText.setText("")
-            amountEditText.setText("")
+                if (expenseId != -1L) {
+                    expense.id = expenseId
+                    listAdapter?.add(expense)
+                    listAdapter?.notifyDataSetChanged()
+                    val totalAmountTextView = findViewById<TextView>(R.id.total_amount)
+                    val totalAmount = expenseDbHelper.getTotalAmountSpent()
+                    val formattedString = resources.getString(R.string.total_amount_label, totalAmount.toString())
+                    totalAmountTextView.text = formattedString
+
+                    nameEditText.setText("")
+                    amountEditText.setText("")
+                }
+            } else {
+                return
+            }
+        } else {
+            return
         }
-
     }
     override fun onDestroy() {
         super.onDestroy()
