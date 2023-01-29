@@ -1,0 +1,6 @@
+<resources>
+    <string name="expense_name_hint">Enter name</string>
+    <string name="expense_amount_hint">Enter amount</string>
+    <string name="add_expense_button_text">Add Expense</string>
+    <string name="total_amount_label">Total amount spent: %1$s</string>
+</resources>

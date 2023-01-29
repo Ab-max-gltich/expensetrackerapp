@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/expense_name"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+
+            android:hint="@string/expense_name_hint" />
+
+        <EditText
+            android:id="@+id/expense_amount"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            android:hint="@string/expense_amount_hint"
+            android:inputType="numberDecimal" />
+
+        <Button
+            android:id="@+id/add_expense_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="addExpense"
+            android:text="@string/add_expense_button_text" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/expense_list"
+        android:layout_width="match_parent"
+        android:layout_height="596dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/total_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/total_amount_label" />
+
+</LinearLayout>
