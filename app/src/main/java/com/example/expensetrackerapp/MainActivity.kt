@@ -25,13 +25,15 @@ class MainActivity : Activity() {
         expenseDbHelper.writableDatabase
 
         val expenses = expenseDbHelper.getAllExpenses()
+
         listAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, expenses)
         val listView = findViewById<ListView>(R.id.expense_list)
         listView.adapter = listAdapter
-
         val totalAmountTextView = findViewById<TextView>(R.id.total_amount)
         val totalAmount = expenseDbHelper.getTotalAmountSpent()
-        totalAmountTextView.text = totalAmount.toString()
+        val formattedString = resources.getString(R.string.total_amount_label, totalAmount.toString())
+        totalAmountTextView.text = formattedString
+
     }
 
     fun addExpense(view: View) {
@@ -53,7 +55,8 @@ class MainActivity : Activity() {
             listAdapter?.notifyDataSetChanged()
             val totalAmountTextView = findViewById<TextView>(R.id.total_amount)
             val totalAmount = expenseDbHelper.getTotalAmountSpent()
-            totalAmountTextView.text = totalAmount.toString()
+            val formattedString = resources.getString(R.string.total_amount_label, totalAmount.toString())
+            totalAmountTextView.text = formattedString
 
             nameEditText.setText("")
             amountEditText.setText("")
